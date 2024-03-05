@@ -22,8 +22,8 @@ This project provides a visual representation of the market capitalization of st
 
 Clone the repository and install the required packages using the following commands:
 ```bash
-git clone <repo>
-cd <repo>
+git clone https://github.com/simonprudhomme/animated-stock-charts
+cd animated-stock-charts
 ```
 
 Create a virtual environment and install the required packages:
