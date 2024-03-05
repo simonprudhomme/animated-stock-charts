@@ -37,7 +37,6 @@ pip install -r requirements.txt
 ## Usage
 Run the notebook under `notebooks/app.ipynb`.
 The generated GIF will be saved in the `output` directory.
-<video src="https://github.com/simonprudhomme/animated-stock-charts/blob/main/output/nvidia_intel_race.mp4" width="300" />
 
 ## Roadmap
 - Add support to load data from sources.
