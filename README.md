@@ -1,8 +1,8 @@
-# Stock Market Capitalization Visualization
+# Stock Market Visualization
 
 ## Overview
-This project provides animated charts of the market capitalization of stocks over time. 
-By generating an animated charts, users can observe the growth and trends in market capitalization of selected stocks, allowing for easy comparison between different companies.
+This project provides animated charts of stocks value over time. 
+By generating an animated charts, users can observe the growth and trend of selected stocks, allowing for easy comparison between different companies.
 
 ## Features
 - Create a line chart visualization comparing two stocks or more.
@@ -36,10 +36,13 @@ pip install -r requirements.txt
 ```
 
 ## Usage
-Run the notebook under `notebooks/app.ipynb`.
-The generated GIF will be saved in the `output` directory.
+Run the CLI 
+```bash
+python stock_animation_cli.py --tickers GOOGL MSFT NVDA --period 6mo
+```
+The generated animation will be saved in the `output` directory.
 
 ## Roadmap
-- Add support to load data from sources.
+- Improve the CLI to reflect the notebook and with option, logs and error handling
+- add key event from SerpAPI for each stock
 - Improve the visualization by adding more features and options.
-- Create a CLI to genereate the visualization from a command line.
