@@ -1,7 +1,8 @@
 # Stock Market Capitalization Visualization
 
 ## Overview
-This project provides a visual representation of the market capitalization of stocks over time. By generating an animated line chart, users can observe the growth and trends in market capitalization of selected stocks, allowing for easy comparison between different companies.
+This project provides animated charts of the market capitalization of stocks over time. 
+By generating an animated charts, users can observe the growth and trends in market capitalization of selected stocks, allowing for easy comparison between different companies.
 
 ## Features
 - Create a line chart visualization comparing two stocks or more.
