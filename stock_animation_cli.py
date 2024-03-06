@@ -2,6 +2,10 @@ import argparse
 import matplotlib.pyplot as plt
 from matplotlib.animation import FuncAnimation, FFMpegWriter
 import yfinance as yf
+import loguru
+
+# Set up logging
+loguru.logger.add('stock_animation.log')
 
 def parse_arguments():
     parser = argparse.ArgumentParser(description='Generate stock progression animation for specified tickers.')
@@ -24,6 +28,7 @@ def prepare_animation(data, tickers):
     fig, ax = plt.subplots(figsize=(10, 8))
     
     def update(frame):
+        loguru.logger.debug(f'Frame: {frame}')
         ax.clear()
         for ticker in tickers:
             ax.plot(data['Date'][:frame], data[ticker][:frame], label=ticker)
@@ -46,8 +51,10 @@ def main():
     
     # Save the animation
     writer = FFMpegWriter(fps=30)
-    ani.save(f'./output/{filename}', writer=writer)
+    file_output = f'./output/{filename}'
+    ani.save(file_output, writer=writer)
     plt.close()
+    loguru.logger.info(f'Animation saved to {file_output}')
 
 if __name__ == '__main__':
     main()
