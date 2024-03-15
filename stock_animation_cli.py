@@ -1,4 +1,5 @@
 import argparse
+import os
 import matplotlib.pyplot as plt
 from matplotlib.animation import FuncAnimation, FFMpegWriter
 import yfinance as yf
@@ -56,6 +57,7 @@ def main():
     # Save the animation
     writer = FFMpegWriter(fps=30)
     file_output = f'./output/{filename}'
+    os.makedirs(os.path.dirname(file_output), exist_ok=True)
     ani.save(file_output, writer=writer)
     plt.close()
     loguru.logger.info(f'Animation saved to {file_output}')
