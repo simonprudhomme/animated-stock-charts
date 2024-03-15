@@ -1,7 +1,8 @@
+# Python 3.11.3
 ipykernel==6.29.3
 pandas==2.2.1
 matplotlib==3.8.3
 seaborn==0.13.2
-yfinance
-google-search-results
-loguru
+yfinance==0.2.37
+google-search-results==2.4.2
+loguru==0.7.2
