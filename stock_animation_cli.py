@@ -12,23 +12,27 @@ def parse_arguments():
     parser.add_argument('--tickers', nargs='+', help='Ticker symbols for the stocks', required=True)
     parser.add_argument('--period', type=str, default='12mo', help='Period over which to fetch the data (e.g., 1mo, 3mo, 6mo, 12mo, ytd)')
     args = parser.parse_args()
+    if len(args.tickers) < 2:
+        parser.error("At least two tickers are required")
     return args
 
 def download_stock_data(tickers, period):
     try:
         data = yf.download(tickers, period=period)
-        if 'Close' not in data:
-            raise ValueError("Data does not contain 'Close' prices")
-        return data['Close'].reset_index()
+        if 'Adj Close' not in data:
+            raise ValueError("Data does not contain 'Adj Close' prices")
+        if data['Adj Close'].isnull().values.any():
+            loguru.logger.warning("Data contains missing values")
+        return data['Adj Close'].reset_index()
     except Exception as e:
         print(f"Failed to download data: {e}")
         exit(1)
 
 def prepare_animation(data, tickers):
-    fig, ax = plt.subplots(figsize=(10, 8))
+    fig, ax = plt.subplots(figsize=(16, 10))
     
     def update(frame):
-        loguru.logger.debug(f'Frame: {frame}')
+        loguru.logger.debug(f'Frame: {frame} / {len(data["Date"])}')
         ax.clear()
         for ticker in tickers:
             ax.plot(data['Date'][:frame], data[ticker][:frame], label=ticker)
